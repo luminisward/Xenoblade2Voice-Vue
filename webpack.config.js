@@ -8,7 +8,7 @@ module.exports = {
   entry: './src/main.js',
   output: {
     path: path.resolve(__dirname, './dist'),
-    publicPath: '/dist/',
+    publicPath: '',
     filename: 'build.js'
   },
   module: {
@@ -64,7 +64,7 @@ module.exports = {
     new CleanWebpackPlugin(['dist']),
     new ExtractTextPlugin("main.css"),
     new HtmlWebpackPlugin({
-      template: 'index.html'
+      template: 'src/index.html'
     })
   ],
   devtool: '#eval-source-map',
