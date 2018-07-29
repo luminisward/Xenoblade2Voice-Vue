@@ -24,7 +24,9 @@ export default {
 
     selectChara(event) {
       let cid = event.target.parentNode.parentNode.getAttribute("cid");
-      this.addChara(cid);
+      if (cid) {
+        this.addChara(cid)
+      }
     }
   }
 }
