@@ -1,6 +1,6 @@
 <template>
   <div>
-    <b-form-select v-model="selected" @change="select" :options="talkList" class="mb-3" :select-size="8">
+    <b-form-select :value="selected" @change="select" :options="talkList" class="mb-3" :select-size="9">
     </b-form-select>
   </div>
 </template>
