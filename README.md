@@ -17,11 +17,11 @@ npm run build
 
 ## Related projects
 
-* 原QT版本: [Xenoblade2Voice](https://github.com/IDKiro/Xenoblade2Voice)
+* 原QT版本: [IDKiro/Xenoblade2Voice](https://github.com/IDKiro/Xenoblade2Voice)
 
 ## Dependencies
 
-* 音乐播放器: [SevenOutman/vue-aplaye](https://github.com/SevenOutman/vue-aplayer)
+* 音乐播放器: [SevenOutman/vue-aplayer](https://github.com/SevenOutman/vue-aplayer)
 
 ## Special Thanks
 
