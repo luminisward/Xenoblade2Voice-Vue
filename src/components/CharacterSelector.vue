@@ -2,7 +2,7 @@
   <div class="scroll">
     <ul style="text-align: left;">
       <li v-for="chara in charaList" :key="chara.cid">
-        <b-button :cid="chara.cid" @click="selectChara" variant="light" class="mb-3">
+        <b-button :cid="chara.cid" @click="selectChara" variant="light" class="mb-2">
           <b-card :img-src="chara.img" :img-alt="chara.name.CN" img-top :alt="chara.name.CN">
             {{ chara.name.CN }}
           </b-card>
@@ -52,7 +52,7 @@ ul {
 
 li {
   display: inline-block;
-  margin: 0 4px;
+  margin: 0 3px;
 }
 
 .btn {
