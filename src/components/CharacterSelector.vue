@@ -20,12 +20,13 @@ export default {
     ...mapGetters(["charaList"])
   },
   methods: {
-    ...mapMutations(["addChara"]),
+    ...mapMutations(["addChara", "setPattern"]),
 
     selectChara(event) {
       let cid = event.target.parentNode.parentNode.getAttribute("cid");
       if (cid) {
         this.addChara(cid)
+        this.setPattern(this.$store.getters.availablePatterns[0])
       }
     }
   }

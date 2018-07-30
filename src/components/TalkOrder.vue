@@ -6,12 +6,11 @@
 </template>
 
 <script>
-import { mapGetters, mapMutations } from "vuex";
+import { mapState, mapMutations } from "vuex";
 
 export default {
   data() {
     return {
-      selected: this.$store.state.selectedPattern
     }
   },
   computed: {
@@ -21,11 +20,13 @@ export default {
           'value': pattern,
           'text': this.$store.state.dialogue[pattern].name.CN
       }})
-    }
+    },
+    ...mapState({
+      selected: 'selectedPattern'
+    })
   },
   methods: {
     ...mapMutations(['setPattern']),
-
     select(value){
       this.setPattern(value)
     }
