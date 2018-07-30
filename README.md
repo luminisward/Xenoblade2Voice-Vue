@@ -17,4 +17,34 @@ npm run build
 
 ## Related projects
 
-源项目：[Xenoblade2Voice](https://github.com/IDKiro/Xenoblade2Voice)
+* 原QT版本: [Xenoblade2Voice](https://github.com/IDKiro/Xenoblade2Voice)
+
+## Dependencies
+
+* 音乐播放器: [SevenOutman/vue-aplaye](https://github.com/SevenOutman/vue-aplayer)
+
+## Special Thanks
+
+#### 数据挖掘:
+
+@Moosehunter(Xenoblade Subreddit Discord)
+
+#### 对话听写与翻译:
+
+@vinsanityvc(NGA)
+
+@takamana(stage1st)
+
+#### 游戏内对话确认协助:
+
+@天天の幻想(Baidu Tieba: 异度之刃)
+
+@nanami_c(Baidu Tieba: 异度之刃)
+
+@黑礼帽的誓言(Baidu Tieba: 异度之刃)
+
+#### 特别感谢:
+
+@TheKjozk(YouTube)
+
+Monolith Soft & Nintendo
