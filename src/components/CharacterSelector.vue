@@ -1,15 +1,15 @@
 <template>
-
-  <ul style="text-align: left;">
-    <li v-for="chara in charaList" :key="chara.cid">
-      <b-button :cid="chara.cid" @click="selectChara" variant="light" class="mb-3">
-        <b-card :img-src="chara.img" :img-alt="chara.name.CN" img-top :alt="chara.name.CN">
-          {{ chara.name.CN }}
-        </b-card>
-      </b-button>
-    </li>
-  </ul>
-
+  <div class="scroll">
+    <ul style="text-align: left;">
+      <li v-for="chara in charaList" :key="chara.cid">
+        <b-button :cid="chara.cid" @click="selectChara" variant="light" class="mb-3">
+          <b-card :img-src="chara.img" :img-alt="chara.name.CN" img-top :alt="chara.name.CN">
+            {{ chara.name.CN }}
+          </b-card>
+        </b-button>
+      </li>
+    </ul>
+  </div>
 </template>
 
 <script>
@@ -52,11 +52,16 @@ ul {
 
 li {
   display: inline-block;
-  margin: 0 10px;
+  margin: 0 4px;
 }
 
 .btn {
   padding: 0;
   border: 0;
+}
+
+.scroll {
+  height: 438px;
+  overflow: auto;
 }
 </style>
