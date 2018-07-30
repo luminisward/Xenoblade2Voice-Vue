@@ -13,7 +13,7 @@ export default new Vuex.Store({
     charactor: parseCharactor(Charactor),
     dialogue: Dialogue,
     selectedChara: [],
-    selectedPattern: Object.keys(Dialogue)[2],
+    selectedPattern: Object.keys(Dialogue)[0],
     selectedDialogue: null
   },
   getters,

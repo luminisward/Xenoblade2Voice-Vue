@@ -1,17 +1,41 @@
 <template>
   <div id="app">
-    <img src="./assets/icon/titlelogo_cn.png">
     <b-container class="bv-example-row">
       <b-row>
+        <b-col md="8" style="float: right">
+          <player/>
+        </b-col>
         <b-col md="4">
           <talk-order/>
-          <selected-box/>
         </b-col>
-        <b-col md="8"><player/></b-col>
+      </b-row>
+      <b-row>
+        <b-col>
+          <selected-box />
+        </b-col>
       </b-row>
       <CharacterSelector/>
+    <footer>
+          <pre>
+版本: v0.2
+
+数据挖掘:
+@Moosehunter(Xenoblade Subreddit Discord)
+
+对话听写与翻译:
+@vinsanityvc(NGA)
+@takamana(stage1st)
+
+游戏内对话确认协助:
+@天天の幻想(Baidu Tieba: 异度之刃)
+@nanami_c(Baidu Tieba: 异度之刃)
+@黑礼帽的誓言(Baidu Tieba: 异度之刃)
+
+制作:
+xenoblade2.cn
+          </pre>
+    </footer>
     </b-container>
-    
   </div>
 </template>
 
@@ -44,14 +68,16 @@ export default {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
+
 }
 
-h1, h2 {
-  font-weight: normal;
+pre {
+  color: white;
+  padding-top: 1rem;
 }
 
-a {
-  color: #42b983;
+body {
+  background-color: #272b32;
 }
+
 </style>
