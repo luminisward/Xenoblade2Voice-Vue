@@ -1,9 +1,8 @@
 <template>
   <div>
-    <b-button @click="remove" variant="light" class="mb-3" v-for="i in box" :key="i">
+    <b-button @click="remove" variant="light" class="mb-4" v-for="i in box" :key="i">
       <b-img :src="charaBoxList[i].img" :cid="charaBoxList[i].cid" width="90px" />
     </b-button>
-
   </div>
 </template>
 
@@ -23,9 +22,10 @@ export default {
     ]),
     remove(event) {
       let cid = event.target.getAttribute('cid')
-      this.removeSelectedChara(cid)
+      if (cid) {
+        this.removeSelectedChara(cid)
+      }
     },
-
   }
 };
 </script>
