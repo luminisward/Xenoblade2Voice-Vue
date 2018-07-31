@@ -1,14 +1,16 @@
 <template>
   <div id="app">
     <Layout>
-      <Sider  width="300" :style="{background: '#fff'}">
-        <talk-order/>
+      <Sider class="sidebar" width="300" >
+        <selected-box :button-size="90"/>
+        <talk-order :height="881"/>
       </Sider>
-      <Layout :style="{padding: '0 24px 24px'}">
-          <player/>
-          <Content>
-            <CharacterSelector/>
-          </Content>
+      <Layout class="main">
+          <player style="overflow: visible;" />
+          <talk-order class="sm" :height="201"/>
+          <selected-box :button-size="70" class="sm"/>
+          <h2>角色选择</h2>
+          <CharacterSelector />
       </Layout>
     </Layout>
   </div>
@@ -30,7 +32,7 @@ export default {
   },
   components: {
     CharacterSelector,
-    // SelectedBox,
+    SelectedBox,
     TalkOrder,
     Player
   }
@@ -38,14 +40,38 @@ export default {
 </script>
 
 <style lang="scss">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+.main {
+  padding: 0px 24px 24px;
+  height: 1000px;
 }
 
-@media screen and (max-width: 760px) {
-    
+.sidebar {
+  background: #fff;
 }
 
+h2 {
+  text-align: center;
+  padding: 5px;
+}
+
+.sm {
+   display: none;
+}
+
+@media screen and (max-width: 680px) {
+    .sidebar {
+      display: none;
+    }
+    .sm {
+      display: block;
+    }
+    div.scroll {
+      img {
+        width: 70px;
+      }
+      .ivu-btn {
+        margin: 1px;
+      }
+    }
+}
 </style>

@@ -1,8 +1,12 @@
 <template>
   <div>
-    <b-button @click="remove" variant="light" class="mb-4" v-for="i in box" :key="i">
-      <b-img :src="charaBoxList[i].img" :cid="charaBoxList[i].cid" width="90px" />
-    </b-button>
+    <h2>角色筛选</h2>
+    <div style="overflow: hidden; text-align: center;">
+
+    <Button @click="remove" v-for="i in box" :key="i" :style="{ width: buttonSize + 'px', height: buttonSize + 'px'}">
+      <img :src="charaBoxList[i].img" :cid="charaBoxList[i].cid" :style="{ width: buttonSize + 'px'}" />
+    </Button>
+    </div>
   </div>
 </template>
 
@@ -10,12 +14,19 @@
 import { mapGetters, mapMutations } from "vuex";
 
 export default {
+
+  props: [
+    'buttonSize'
+  ],
+
   data() {
     return {
       box: [0, 1, 2]
     }
   },
+
   computed: mapGetters(["charaBoxList"]),
+
   methods: {
     ...mapMutations([
       'removeSelectedChara'
@@ -31,12 +42,9 @@ export default {
 </script>
 
 <style scoped>
-button.btn{
-  width: 90px;
-  height: 90px;
-  margin-right: 8px;
-  margin-left: 8px;
+button {
+  margin: 0px 5px 7px 5px;
   padding: 0;
-  border: 0;
+  border-radius: 0;
 }
 </style>
