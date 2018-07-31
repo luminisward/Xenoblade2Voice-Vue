@@ -9,14 +9,13 @@
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
   },
   "dependencies": {
-    "bootstrap": "^4.0.0-beta.2",
-    "bootstrap-vue": "^1.2.0",
-    "hls.js": "^0.10.1",
-    "popper.js": "^1.12.9",
+    "iview": "^3.0.0",
     "vue": "^2.5.3",
     "vuex": "^3.0.1"
   },
   "devDependencies": {
+    "hls.js": "^0.10.1",
+    "popper.js": "^1.12.9",
     "babel-core": "^6.26.0",
     "babel-loader": "^6.0.0",
     "babel-preset-env": "^1.6.1",
@@ -37,6 +36,7 @@
     "node-sass": "^4.6.1",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.19.0",
+    "url-loader": "^1.0.1",
     "vue-loader": "^13.5.0",
     "vue-template-compiler": "^2.5.3",
     "webpack": "^3.8.1",

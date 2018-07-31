@@ -2,11 +2,9 @@
   <div class="scroll">
     <ul style="text-align: left;">
       <li v-for="chara in charaList" :key="chara.cid">
-        <b-button :cid="chara.cid" @click="selectChara" variant="light" class="mb-2">
-          <b-card :img-src="chara.img" :img-alt="chara.name.CN" img-top :alt="chara.name.CN">
-            {{ chara.name.CN }}
-          </b-card>
-        </b-button>
+        <Button :name="chara.cid" @click="selectChara" >
+          <img :src="chara.img" :name="chara.cid"/>
+        </Button>
       </li>
     </ul>
   </div>
@@ -23,7 +21,8 @@ export default {
     ...mapMutations(["addChara", "setPattern"]),
 
     selectChara(event) {
-      let cid = event.target.parentNode.parentNode.getAttribute("cid");
+      let cid = event.target.name;
+      console.log(cid)
       if (cid) {
         this.addChara(cid)
         this.setPattern(this.$store.getters.availablePatterns[0])
@@ -34,7 +33,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-div.card {
+img {
   width: 90px;
 }
 
@@ -63,5 +62,6 @@ li {
 .scroll {
   height: 438px;
   overflow: auto;
+  
 }
 </style>

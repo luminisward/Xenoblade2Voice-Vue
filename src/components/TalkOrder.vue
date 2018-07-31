@@ -1,8 +1,6 @@
 <template>
-  <div>
-    <b-form-select :value="selected" @change="select" :options="talkList" class="mb-3" :select-size="9">
-    </b-form-select>
-  </div>
+  <Table highlight-row ref="currentRowTable" :columns="columns" :data="talkList" height="300" @on-current-change="select"></Table>
+
 </template>
 
 <script>
@@ -11,13 +9,20 @@ import { mapState, mapMutations } from "vuex";
 export default {
   data() {
     return {
+      columns: [
+        {
+          title: ' ',
+          key: 'text'
+        },
+
+      ]
     }
   },
   computed: {
     talkList() {
       return this.$store.getters.availablePatterns.map(
         pattern => { return {
-          'value': pattern,
+          'pattern': pattern,
           'text': this.$store.state.dialogue[pattern].name.CN
       }})
     },
@@ -27,8 +32,8 @@ export default {
   },
   methods: {
     ...mapMutations(['setPattern']),
-    select(value){
-      this.setPattern(value)
+    select(rowData){
+      this.setPattern(rowData.pattern)
     }
   }
 }
