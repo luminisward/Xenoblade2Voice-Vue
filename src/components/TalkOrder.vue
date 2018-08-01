@@ -1,9 +1,17 @@
 <template>
-  <Table highlight-row ref="currentRowTable" :columns="columns" :data="talkList" :height="height" @on-current-change="select" size="small"></Table>
+  <Table
+    highlight-row
+    ref="currentRowTable"
+    :columns="columns"
+    :data="talkList"
+    :height="height"
+    @on-current-change="select"
+    size="small"
+    ></Table>
 </template>
 
 <script>
-import { mapState, mapMutations } from "vuex";
+import { mapMutations } from "vuex";
 
 export default {
   
@@ -26,12 +34,10 @@ export default {
       return this.$store.getters.availablePatterns.map(
         pattern => { return {
           'pattern': pattern,
-          'text': this.$store.state.dialogue[pattern].name.CN
+          'text': this.$store.state.dialogue[pattern].name[this.$store.state.language]
       }})
     },
-    ...mapState({
-      selected: 'selectedPattern'
-    })
+
   },
 
   methods: {

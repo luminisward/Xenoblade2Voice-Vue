@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2>角色筛选</h2>
+    <h2>已选角色（点击移除）</h2>
     <div style="overflow: hidden; text-align: center;">
 
     <Button @click="remove" v-for="i in box" :key="i" :cid="charaBoxList[i].cid" :style="{ width: buttonSize + 'px', height: buttonSize + 'px'}">

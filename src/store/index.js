@@ -14,7 +14,8 @@ export default new Vuex.Store({
     dialogue: Dialogue,
     selectedChara: [],
     selectedPattern: Object.keys(Dialogue)[0],
-    selectedDialogue: null
+    selectedDialogue: null,
+    language: 'CN'
   },
   getters,
   mutations

@@ -6,11 +6,12 @@
         <talk-order :height="866"/>
       </Sider>
       <Layout class="main">
-          <player style="overflow: visible;" />
-          <talk-order class="sm" :height="201" />
-          <selected-box :button-size="70" class="sm"/>
-          <h2>角色选择</h2>
-          <CharacterSelector />
+        <switch-language/>
+        <player style="overflow: visible;" />
+        <talk-order class="sm" :height="201" />
+        <selected-box :button-size="70" class="sm"/>
+        <h2>角色选择</h2>
+        <CharacterSelector />
       </Layout>
     </Layout>
   </div>
@@ -20,7 +21,7 @@
 import CharacterSelector from './components/CharacterSelector.vue'
 import SelectedBox from './components/SelectedBox.vue'
 import TalkOrder from './components/TalkOrder.vue'
-// import Dialogue from './components/Dialogue.vue'
+import SwitchLanguage from './components/SwitchLanguage.vue'
 import Player from './components/Player.vue'
 
 export default {
@@ -34,7 +35,8 @@ export default {
     CharacterSelector,
     SelectedBox,
     TalkOrder,
-    Player
+    Player,
+    SwitchLanguage
   }
 }
 </script>

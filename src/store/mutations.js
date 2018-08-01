@@ -18,5 +18,9 @@ export default {
 
   setPattern (state, pattern) {
     state.selectedPattern = pattern
+  },
+
+  setLanguage (state, language) {
+    state.language = language
   }
 }

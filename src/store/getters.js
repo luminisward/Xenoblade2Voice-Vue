@@ -52,26 +52,13 @@ export default {
       ret.push({
         img: dummyImg,
         name: {
-          CN: ''
+          CN: '',
+          JP: ''
         }
       })
       i += 1
     }
     return ret;
-  },
-
-  dialogueTextList(state) {
-    if (state.selectedPattern) {
-      let textObj = state.dialogue[state.selectedPattern]['text']
-      for (let voice in textObj) {
-        textObj[voice]['voice'] = require('../assets/music/'+ voice + '.mp3')
-        textObj[voice]['speaker'] = textObj[voice]['CN'].split('：')[0]
-        textObj[voice]['text'] = textObj[voice]['CN'].split('：')[1]
-      }
-      return Object.values(textObj)
-    }
-      
-    return []
   },
 
   playList(state) {
@@ -81,8 +68,8 @@ export default {
       for (let voice in textObj) {
         playList.push({
           src: require('../assets/music/'+ voice + '.mp3'),
-          artist: textObj[voice]['CN'].split('：')[0],
-          title: textObj[voice]['CN'].split('：')[1],
+          artist: textObj[voice][state.language].split('：')[0],
+          title: textObj[voice][state.language].split('：')[1],
         })
       }
 
