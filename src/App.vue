@@ -3,11 +3,11 @@
     <Layout>
       <Sider class="sidebar" width="300" >
         <selected-box :button-size="90"/>
-        <talk-order :height="881"/>
+        <talk-order :height="866"/>
       </Sider>
       <Layout class="main">
           <player style="overflow: visible;" />
-          <talk-order class="sm" :height="201"/>
+          <talk-order class="sm" :height="201" />
           <selected-box :button-size="70" class="sm"/>
           <h2>角色选择</h2>
           <CharacterSelector />
@@ -41,7 +41,6 @@ export default {
 
 <style lang="scss">
 .main {
-  padding: 0px 24px 24px;
   height: 1000px;
 }
 
@@ -64,6 +63,7 @@ h2 {
     }
     .sm {
       display: block;
+      margin: 5px;
     }
     div.scroll {
       img {
