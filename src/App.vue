@@ -1,41 +1,19 @@
 <template>
   <div id="app">
-    <b-container class="bv-example-row">
-      <b-row>
-        <b-col md="8" style="float: right">
-          <player/>
-        </b-col>
-        <b-col md="4">
-          <talk-order/>
-        </b-col>
-      </b-row>
-      <b-row>
-        <b-col>
-          <selected-box />
-        </b-col>
-      </b-row>
-      <CharacterSelector/>
-    <footer>
-          <pre>
-版本: v0.2
-
-数据挖掘:
-@Moosehunter(Xenoblade Subreddit Discord)
-
-对话听写与翻译:
-@vinsanityvc(NGA)
-@takamana(stage1st)
-
-游戏内对话确认协助:
-@天天の幻想(Baidu Tieba: 异度之刃)
-@nanami_c(Baidu Tieba: 异度之刃)
-@黑礼帽的誓言(Baidu Tieba: 异度之刃)
-
-制作:
-xenoblade2.cn
-          </pre>
-    </footer>
-    </b-container>
+    <Layout>
+      <Sider class="sidebar" width="300" >
+        <selected-box :button-size="90"/>
+        <talk-order :height="866"/>
+      </Sider>
+      <Layout class="main">
+        <switch-language/>
+        <player style="overflow: visible;" />
+        <talk-order class="sm" :height="201" />
+        <selected-box :button-size="70" class="sm"/>
+        <h2>角色选择</h2>
+        <CharacterSelector />
+      </Layout>
+    </Layout>
   </div>
 </template>
 
@@ -43,7 +21,7 @@ xenoblade2.cn
 import CharacterSelector from './components/CharacterSelector.vue'
 import SelectedBox from './components/SelectedBox.vue'
 import TalkOrder from './components/TalkOrder.vue'
-// import Dialogue from './components/Dialogue.vue'
+import SwitchLanguage from './components/SwitchLanguage.vue'
 import Player from './components/Player.vue'
 
 export default {
@@ -56,28 +34,46 @@ export default {
   components: {
     CharacterSelector,
     SelectedBox,
-    // Dialogue,
     TalkOrder,
-    Player
+    Player,
+    SwitchLanguage
   }
 }
 </script>
 
 <style lang="scss">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-
+.main {
+  height: 1000px;
 }
 
-pre {
-  color: white;
-  padding-top: 1rem;
+.sidebar {
+  background: #fff;
 }
 
-body {
-  background-color: #272b32;
+h2 {
+  text-align: center;
+  padding: 5px;
 }
 
+.sm {
+   display: none;
+}
+
+@media screen and (max-width: 680px) {
+    .sidebar {
+      display: none;
+    }
+    .sm {
+      display: block;
+      margin: 5px;
+    }
+    div.scroll {
+      img {
+        width: 70px;
+      }
+      .ivu-btn {
+        margin: 1px;
+      }
+    }
+}
 </style>

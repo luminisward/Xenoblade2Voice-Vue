@@ -31,7 +31,7 @@ export default {
         charaList.push({
           'cid': cid,
           'name': state.charactor[cid].name,
-          'img': require('../assets/image/' + cid + '.png')
+          'img': state.charactor[cid].img
         })
       }
     )
@@ -45,13 +45,15 @@ export default {
     for (let i of state.selectedChara) {
       ret.push(i);
     }
-
+    
+    let dummyImg = require('../assets/image/placeholder.png')
     let i = state.selectedChara.length
     while (i < 3) {
       ret.push({
-        img: '',
+        img: dummyImg,
         name: {
-          CN: ''
+          CN: '',
+          JP: ''
         }
       })
       i += 1
@@ -59,34 +61,27 @@ export default {
     return ret;
   },
 
-  dialogueTextList(state) {
-    if (state.selectedPattern) {
-      let textObj = state.dialogue[state.selectedPattern]['text']
-      for (let voice in textObj) {
-        textObj[voice]['voice'] = require('../assets/music/'+ voice + '.mp3')
-        textObj[voice]['speaker'] = textObj[voice]['CN'].split('：')[0]
-        textObj[voice]['text'] = textObj[voice]['CN'].split('：')[1]
-      }
-      return Object.values(textObj)
-    }
-      
-    return []
-  },
-
   playList(state) {
     if (state.selectedPattern) {
       let textObj = state.dialogue[state.selectedPattern]['text']
-      let ret = []
+      let playList = []
       for (let voice in textObj) {
-        ret.push({
+        playList.push({
           src: require('../assets/music/'+ voice + '.mp3'),
-          artist: textObj[voice]['CN'].split('：')[0],
-          title: textObj[voice]['CN'].split('：')[1]
+          artist: textObj[voice][state.language].split('：')[0],
+          title: textObj[voice][state.language].split('：')[1],
         })
       }
-      return ret
+
+      let cids = state.selectedPattern.split('_').map(cid => cid.replace('x', ''))
+      for (let trackId in playList) {
+        let cid = cids[trackId]
+        playList[trackId]['pic'] = state.charactor[cid].img
+      }
+
+      return playList
     }
-      
+
     return []
   }
 }

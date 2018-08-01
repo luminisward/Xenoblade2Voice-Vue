@@ -40,7 +40,7 @@ module.exports = {
         })
       },
       {
-        test: /\.(png|jpg|gif|svg|mp3)$/,
+        test: /\.(png|jpg|gif|mp3|woff|svg|eot|ttf)$/,
         loader: 'file-loader',
         options: {
           name: '[name].[ext]?[hash]'
