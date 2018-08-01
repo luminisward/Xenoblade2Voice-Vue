@@ -45,11 +45,12 @@ export default {
     for (let i of state.selectedChara) {
       ret.push(i);
     }
-
+    
+    let dummyImg = require('../assets/image/placeholder.png')
     let i = state.selectedChara.length
     while (i < 3) {
       ret.push({
-        img: '',
+        img: dummyImg,
         name: {
           CN: ''
         }

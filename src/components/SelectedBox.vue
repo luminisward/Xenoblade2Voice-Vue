@@ -43,8 +43,9 @@ export default {
 
 <style scoped>
 button {
-  margin: 0px 5px 7px 5px;
+  margin: 0px 4px 7px;
   padding: 0;
   border-radius: 0;
+  box-sizing: content-box;
 }
 </style>
