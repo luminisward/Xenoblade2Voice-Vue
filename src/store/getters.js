@@ -31,7 +31,7 @@ export default {
         charaList.push({
           'cid': cid,
           'name': state.charactor[cid].name,
-          'img': require('../assets/image/' + cid + '.png')
+          'img': state.charactor[cid].img
         })
       }
     )
@@ -76,17 +76,24 @@ export default {
   playList(state) {
     if (state.selectedPattern) {
       let textObj = state.dialogue[state.selectedPattern]['text']
-      let ret = []
+      let playList = []
       for (let voice in textObj) {
-        ret.push({
+        playList.push({
           src: require('../assets/music/'+ voice + '.mp3'),
           artist: textObj[voice]['CN'].split('：')[0],
-          title: textObj[voice]['CN'].split('：')[1]
+          title: textObj[voice]['CN'].split('：')[1],
         })
       }
-      return ret
+
+      let cids = state.selectedPattern.split('_').map(cid => cid.replace('x', ''))
+      for (let trackId in playList) {
+        let cid = cids[trackId]
+        playList[trackId]['pic'] = state.charactor[cid].img
+      }
+
+      return playList
     }
-      
+
     return []
   }
 }
