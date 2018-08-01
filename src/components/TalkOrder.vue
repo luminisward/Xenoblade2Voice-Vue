@@ -19,7 +19,6 @@ export default {
   computed: {
     columns() {
       let patternCount = this.$store.getters.availablePatterns.length
-      console.log(patternCount)
       return [{ title: '对话组合数: ' + patternCount, key: 'text' }]
     },
 

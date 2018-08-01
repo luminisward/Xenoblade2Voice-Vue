@@ -3,7 +3,7 @@
     <h2>角色筛选</h2>
     <div style="overflow: hidden; text-align: center;">
 
-    <Button @click="remove" v-for="i in box" :key="i" :style="{ width: buttonSize + 'px', height: buttonSize + 'px'}">
+    <Button @click="remove" v-for="i in box" :key="i" :cid="charaBoxList[i].cid" :style="{ width: buttonSize + 'px', height: buttonSize + 'px'}">
       <img :src="charaBoxList[i].img" :cid="charaBoxList[i].cid" :style="{ width: buttonSize + 'px'}" />
     </Button>
     </div>
