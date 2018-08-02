@@ -14,6 +14,7 @@ cache:
 
 before_deploy:
   - npm run build && rm dist/*.map
+  - docker build -t luminisward/xb2voice 。
 
 deploy:
   provider: script
