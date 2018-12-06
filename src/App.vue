@@ -3,13 +3,15 @@
     <Layout>
       <Sider class="sidebar" width="300" >
         <selected-box :button-size="90"/>
-        <talk-order :height="866"/>
+        <talk-order :height="834"/>
       </Sider>
       <Layout class="main">
         <switch-language/>
         <player style="overflow: visible;" />
-        <talk-order :height="201" class="sm" />
-        <selected-box :button-size="70" class="sm"/>
+        <div class="sm">
+          <talk-order :height="201" />
+          <selected-box :button-size="70" />
+        </div>
         <switch-charactor />
         <character-selector />
       </Layout>
