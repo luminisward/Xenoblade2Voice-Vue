@@ -1,13 +1,16 @@
 <template>
-  <Table
-    ref="currentRowTable"
-    :columns="columns"
-    :data="talkList"
-    :height="height"
-    highlight-row
-    size="small"
-    @on-current-change="select"
-  />
+  <div>
+    <Input v-model="search" placeholder="搜索..." />
+    <Table
+      ref="currentRowTable"
+      :columns="columns"
+      :data="talkList"
+      :height="height"
+      highlight-row
+      size="small"
+      @on-current-change="select"
+    />
+  </div>
 </template>
 
 <script>
@@ -21,12 +24,13 @@ export default {
 
   data() {
     return {
+      search: ''
     }
   },
 
   computed: {
     columns() {
-      const patternCount = this.$store.getters.availablePatterns.length
+      const patternCount = this.talkList.length
       return [{ title: '对话组合数: ' + patternCount, key: 'text' }]
     },
 
@@ -44,12 +48,13 @@ export default {
         }
       }
       return this.$store.getters.availablePatterns.map(
-        pattern => {
-          return {
-            'pattern': pattern,
-            'text': dialogue[pattern].name[this.$store.state.language]
-          }
+        pattern => ({
+          'pattern': pattern,
+          'text': dialogue[pattern].name[this.$store.state.language]
         })
+      ).filter(
+        pattern => pattern.text.includes(this.search)
+      )
     }
 
   },
