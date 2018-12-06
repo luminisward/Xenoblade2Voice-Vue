@@ -5,9 +5,8 @@ export default {
   },
 
   charaList(state) {
-
-    let availablePatterns = getAvailablePatterns(state)
-    let charaList = []
+    const availablePatterns = getAvailablePatterns(state)
+    const charaList = []
 
     // Set去重
     let cids = new Set(
@@ -16,13 +15,27 @@ export default {
       ).reduce(
         (x, y) => x.concat(y)
       ).map(
-        cid => cid.replace('x', '')
+        cid => cid.replace(/[xyz]/g, '')
       )
     )
 
     // 去除已选的角色
-    let selectedCid = state.selectedChara.map(x => x.cid)
+    const selectedCid = state.selectedChara.map(x => x.cid)
     selectedCid.map(cid => cids.delete(cid))
+
+    // 根据游戏切换角色列表
+    let charactor = state.charactor
+    switch (state.game) {
+      case 'main':
+      {
+        charactor = state.charactor
+        break
+      }
+      case 'torna':
+      {
+        charactor = state.charactorDlc
+      }
+    }
 
     // 生成charaList
     cids = Array.from(cids)
@@ -30,8 +43,8 @@ export default {
       cid => {
         charaList.push({
           'cid': cid,
-          'name': state.charactor[cid].name,
-          'img': state.charactor[cid].img
+          'name': charactor[cid].name,
+          'img': charactor[cid].img
         })
       }
     )
@@ -41,12 +54,12 @@ export default {
   },
 
   charaBoxList(state) {
-    let ret = []
-    for (let i of state.selectedChara) {
-      ret.push(i);
+    const ret = []
+    for (const i of state.selectedChara) {
+      ret.push(i)
     }
-    
-    let dummyImg = require('../assets/image/placeholder.png')
+
+    const dummyImg = require('../assets/image/placeholder.png')
     let i = state.selectedChara.length
     while (i < 3) {
       ret.push({
@@ -58,25 +71,39 @@ export default {
       })
       i += 1
     }
-    return ret;
+    return ret
   },
 
   playList(state) {
+    let dialogue, charactor
+    switch (state.game) {
+      case 'main':
+      {
+        charactor = state.charactor
+        dialogue = state.dialogue
+        break
+      }
+      case 'torna':
+      {
+        charactor = state.charactorDlc
+        dialogue = state.dialogueDlc
+      }
+    }
     if (state.selectedPattern) {
-      let textObj = state.dialogue[state.selectedPattern]['text']
-      let playList = []
-      for (let voice in textObj) {
+      const textObj = dialogue[state.selectedPattern]['text']
+      const playList = []
+      for (const voice in textObj) {
         playList.push({
-          src: require('../assets/music/'+ voice + '.mp3'),
+          src: require('../assets/music/' + voice + '.mp3'),
           artist: textObj[voice][state.language].split('：')[0],
-          title: textObj[voice][state.language].split('：')[1],
+          title: textObj[voice][state.language].split('：')[1]
         })
       }
 
-      let cids = state.selectedPattern.split('_').map(cid => cid.replace('x', ''))
-      for (let trackId in playList) {
-        let cid = cids[trackId]
-        playList[trackId]['pic'] = state.charactor[cid].img
+      const cids = state.selectedPattern.split('_').map(cid => cid.replace(/[xyz]/g, ''))
+      for (const trackId in playList) {
+        const cid = cids[trackId]
+        playList[trackId]['pic'] = charactor[cid].img
       }
 
       return playList
@@ -87,9 +114,20 @@ export default {
 }
 
 function getAvailablePatterns(state) {
-
-  let dialoguePatterns = Object.keys(state.dialogue)
-  let selectedCid = state.selectedChara.map(x => x.cid) // 已选择的角色id
+  let dialogue
+  switch (state.game) {
+    case 'main':
+    {
+      dialogue = state.dialogue
+      break
+    }
+    case 'torna':
+    {
+      dialogue = state.dialogueDlc
+    }
+  }
+  const dialoguePatterns = Object.keys(dialogue)
+  const selectedCid = state.selectedChara.map(x => x.cid) // 已选择的角色id
   let availablePatterns = []
   if (selectedCid.length) {
     availablePatterns = dialoguePatterns.filter(

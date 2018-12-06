@@ -1,24 +1,24 @@
 <template>
   <Table
-    highlight-row
     ref="currentRowTable"
     :columns="columns"
     :data="talkList"
     :height="height"
-    @on-current-change="select"
+    highlight-row
     size="small"
-    ></Table>
+    @on-current-change="select"
+  />
 </template>
 
 <script>
-import { mapMutations } from "vuex";
+import { mapMutations } from 'vuex'
 
 export default {
-  
-  props: [
-    'height'
-  ],
-  
+
+  props: {
+    height: { type: Number, default: 200 }
+  },
+
   data() {
     return {
     }
@@ -26,25 +26,39 @@ export default {
 
   computed: {
     columns() {
-      let patternCount = this.$store.getters.availablePatterns.length
+      const patternCount = this.$store.getters.availablePatterns.length
       return [{ title: '对话组合数: ' + patternCount, key: 'text' }]
     },
 
     talkList() {
+      let dialogue
+      switch (this.$store.state.game) {
+        case 'main':
+        {
+          dialogue = this.$store.state.dialogue
+          break
+        }
+        case 'torna':
+        {
+          dialogue = this.$store.state.dialogueDlc
+        }
+      }
       return this.$store.getters.availablePatterns.map(
-        pattern => { return {
-          'pattern': pattern,
-          'text': this.$store.state.dialogue[pattern].name[this.$store.state.language]
-      }})
-    },
+        pattern => {
+          return {
+            'pattern': pattern,
+            'text': dialogue[pattern].name[this.$store.state.language]
+          }
+        })
+    }
 
   },
 
   methods: {
     ...mapMutations(['setPattern']),
-    select(rowData){
+    select(rowData) {
       this.setPattern(rowData.pattern)
-    },
+    }
   }
 }
 </script>

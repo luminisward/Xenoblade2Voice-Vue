@@ -3,21 +3,21 @@
     <h2>已选角色（点击移除）</h2>
     <div style="overflow: hidden; text-align: center;">
 
-    <Button @click="remove" v-for="i in box" :key="i" :cid="charaBoxList[i].cid" :style="{ width: buttonSize + 'px', height: buttonSize + 'px'}">
-      <img :src="charaBoxList[i].img" :cid="charaBoxList[i].cid" :style="{ width: buttonSize + 'px'}" />
-    </Button>
+      <Button v-for="i in box" :key="i" :cid="charaBoxList[i].cid" :style="{ width: buttonSize + 'px', height: buttonSize + 'px'}" @click="remove">
+        <img :src="charaBoxList[i].img" :cid="charaBoxList[i].cid" :style="{ width: buttonSize + 'px'}" >
+      </Button>
     </div>
   </div>
 </template>
 
 <script>
-import { mapGetters, mapMutations } from "vuex";
+import { mapGetters, mapMutations } from 'vuex'
 
 export default {
 
-  props: [
-    'buttonSize'
-  ],
+  props: {
+    buttonSize: { type: Number, default: 70 }
+  },
 
   data() {
     return {
@@ -25,20 +25,20 @@ export default {
     }
   },
 
-  computed: mapGetters(["charaBoxList"]),
+  computed: mapGetters(['charaBoxList']),
 
   methods: {
     ...mapMutations([
       'removeSelectedChara'
     ]),
     remove(event) {
-      let cid = event.target.getAttribute('cid')
+      const cid = event.target.getAttribute('cid')
       if (cid) {
         this.removeSelectedChara(cid)
       }
-    },
+    }
   }
-};
+}
 </script>
 
 <style scoped>

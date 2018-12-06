@@ -9,15 +9,15 @@
 </template>
 
 <script>
-import { mapGetters, mapMutations } from "vuex";
+import { mapMutations } from 'vuex'
 
 export default {
   computed: {
     language: {
-      get () {
+      get() {
         return this.$store.state.language
       },
-      set (value) {
+      set(value) {
         this.setLanguage(value)
       }
     }

@@ -8,10 +8,10 @@
       <Layout class="main">
         <switch-language/>
         <player style="overflow: visible;" />
-        <talk-order class="sm" :height="201" />
+        <talk-order :height="201" class="sm" />
         <selected-box :button-size="70" class="sm"/>
-        <h2>角色选择</h2>
-        <CharacterSelector />
+        <switch-charactor />
+        <character-selector />
       </Layout>
     </Layout>
   </div>
@@ -22,21 +22,22 @@ import CharacterSelector from './components/CharacterSelector.vue'
 import SelectedBox from './components/SelectedBox.vue'
 import TalkOrder from './components/TalkOrder.vue'
 import SwitchLanguage from './components/SwitchLanguage.vue'
+import SwitchCharactor from './components/SwitchCharactor.vue'
 import Player from './components/Player.vue'
 
 export default {
-  name: 'app',
-  data () {
-    return {
-      msg: 'Welcome to Your Vue.js App'
-    }
-  },
+  name: 'App',
   components: {
     CharacterSelector,
+    SwitchCharactor,
     SelectedBox,
     TalkOrder,
     Player,
     SwitchLanguage
+  },
+  data() {
+    return {
+    }
   }
 }
 </script>

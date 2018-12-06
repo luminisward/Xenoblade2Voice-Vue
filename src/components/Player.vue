@@ -1,5 +1,5 @@
 <template>
-  <aplayer :music="playList[0]" :list="playList" repeat="none" ref="player" />
+  <aplayer ref="player" :music="playList[0]" :list="playList" repeat="none" />
 </template>
 
 <script>
@@ -7,23 +7,23 @@ import Aplayer from '../vendor/vue-aplayer.min.js'
 
 export default {
 
-  watch: {
-    selectedPattern () {
-      this.$refs.player.thenPlay()
-    }
+  components: {
+    Aplayer
   },
 
   computed: {
     playList() {
       return this.$store.getters.playList
     },
-    selectedPattern() {
-      return this.$store.state.selectedPattern
+    thenPlay() {
+      return this.$store.state.thenPlay
     }
   },
 
-  components: {
-    Aplayer
+  watch: {
+    thenPlay() {
+      this.$refs.player.thenPlay()
+    }
   }
 }
 </script>
