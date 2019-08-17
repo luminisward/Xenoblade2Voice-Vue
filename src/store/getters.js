@@ -132,7 +132,7 @@ function getAvailablePatterns(state) {
   if (selectedCid.length) {
     availablePatterns = dialoguePatterns.filter(
       pattern => selectedCid.map(
-        cid => pattern.includes(cid)
+        cid => pattern.replace(/[a-z]/g, '').split('_').includes(cid)
       ).reduce((a, b) => a && b)
     )
   } else {
