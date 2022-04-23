@@ -1,5 +1,5 @@
 module.exports = {
-  publicPath: '/voice',
+  publicPath: '/xb2battlevoice',
   pages: {
     index: {
       entry: 'src/main.js',
