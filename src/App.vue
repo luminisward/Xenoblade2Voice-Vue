@@ -50,7 +50,7 @@ export default {
 }
 
 .sidebar {
-  background: #fff;
+  background: #fff!important;
 }
 
 h2 {
